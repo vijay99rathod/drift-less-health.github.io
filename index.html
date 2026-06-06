@@ -401,6 +401,27 @@ button{cursor:pointer;border:none;font-family:var(--f)}
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 }
 
+/* ─── HAMBURGER MENU ──────────────────────────────── */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:8px;border-radius:4px;transition:background .2s}
+.nav-hamburger:hover{background:var(--linen)}
+.nav-hamburger span{display:block;height:2px;background:var(--navy);border-radius:2px;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s,width .3s}
+.nav-hamburger span:nth-child(2){width:70%}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;width:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile drawer */
+.mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:150;display:flex;flex-direction:column;padding:100px 6vw 40px;transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);overflow-y:auto}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu-links{display:flex;flex-direction:column;gap:0;margin-bottom:32px}
+.mobile-menu-links a{font-size:22px;font-weight:600;letter-spacing:-.5px;color:var(--navy);padding:16px 0;border-bottom:1px solid var(--linen);display:flex;align-items:center;justify-content:space-between;transition:color .2s}
+.mobile-menu-links a:hover{color:var(--amber)}
+.mobile-menu-links a svg{width:16px;height:16px;color:var(--amber)}
+.mobile-menu-divider{height:1px;background:var(--linen);margin:8px 0 24px}
+.mobile-menu-phone{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:20px}
+.mobile-menu-phone svg{width:18px;height:18px;color:var(--amber)}
+.mobile-menu-cta{display:block;background:var(--amber);color:#fff;font-size:15px;font-weight:700;letter-spacing:.03em;text-align:center;padding:16px;border-radius:4px}
+
 /* ─── RESPONSIVE ──────────────────────────────────── */
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr}
@@ -416,18 +437,66 @@ button{cursor:pointer;border:none;font-family:var(--f)}
   .footer-top{grid-template-columns:1fr 1fr;gap:36px}
   .cta-band{flex-direction:column;gap:28px;text-align:center}
 }
+
 @media(max-width:768px){
+  /* ── NAV ── */
   .topbar,.hero-bar{display:none}
-  .nav-links{display:none}
-  .team-grid,.blog-grid{grid-template-columns:1fr}
+  .nav{padding:0 5vw;height:64px}
+  .nav-links,.nav-right{display:none}
+  .nav-hamburger{display:flex}
+
+  /* ── HERO ── */
+  .hero-left{padding:72px 5vw 52px}
+  .hero-h1{font-size:clamp(36px,9vw,52px);letter-spacing:-2px}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hero-btns .btn-amber,.hero-btns .btn-ghost-white{text-align:center;justify-content:center}
+
+  /* ── STATS ── */
   .stats-inner{grid-template-columns:1fr 1fr}
-  .contact-strip-inner{grid-template-columns:1fr}
+
+  /* ── ABOUT ── */
+  .about-imgs{height:280px}
+
+  /* ── SERVICES/SCHEDULE ── */
+  .services-grid,.schedule-grid-inner{grid-template-columns:1fr;gap:40px}
+
+  /* ── PRICING SECTION ── */
+  .pricing-two-col{grid-template-columns:1fr !important;gap:32px}
+  .pricing-fee-table{overflow:hidden}
+  .pricing-fee-row{display:flex;flex-wrap:wrap;gap:4px}
+  .pricing-fee-name{flex:1;min-width:0;font-size:13px}
+  .pricing-fee-price{font-size:17px !important;white-space:nowrap}
+
+  /* ── TEAM / BLOG ── */
+  .team-grid,.blog-grid{grid-template-columns:1fr}
+
+  /* ── WHY TRUST ── */
+  .whytrust-stat{right:0;bottom:16px}
+
+  /* ── CTA BAND ── */
+  .cta-band{flex-direction:column;gap:24px;text-align:center;padding:48px 5vw}
+  .cta-band-actions{justify-content:center}
+
+  /* ── CONTACT STRIP ── */
+  .contact-strip-inner{grid-template-columns:1fr;row-gap:24px}
   .contact-item{border-right:none;padding:0}
-  .footer-top{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;text-align:center}
-  .footer-disclaimer{text-align:center}
-  .hero-btns{flex-direction:column;align-items:flex-start}
-  .whytrust-stat{right:0}
+
+  /* ── FOOTER ── */
+  .footer-top{
+    grid-template-columns:1fr !important;
+    gap:0 !important;
+  }
+  .footer-brand{padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:24px}
+  .footer-cols-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px 16px;
+  }
+  .footer-bottom{flex-direction:column;text-align:center;gap:8px}
+  .footer-disclaimer{text-align:center;max-width:100%}
+
+  /* ── SECTION PADDING ── */
+  .section{padding:60px 5vw}
 }
 </style>
 </head>
@@ -500,7 +569,30 @@ button{cursor:pointer;border:none;font-family:var(--f)}
     </div>
     <a href="#schedule" class="nav-btn">Request a Visit</a>
   </div>
+
+  <!-- Hamburger — mobile only -->
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile drawer -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-menu-links">
+    <a href="#about" class="mobile-nav-link">About <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="#services" class="mobile-nav-link">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="#team" class="mobile-nav-link">Our Team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="#why" class="mobile-nav-link">Why Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="#blog" class="mobile-nav-link">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="#contact" class="mobile-nav-link">Contact <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></a>
+  </nav>
+  <div class="mobile-menu-divider"></div>
+  <div class="mobile-menu-phone">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.00 1.18 2 2 0 012 .98h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    (608) 555-0190
+  </div>
+  <a href="#schedule" class="mobile-menu-cta mobile-nav-link">Request a Visit →</a>
+</div>
 
 
 <!-- ══ HERO ════════════════════════════════════════════ -->
@@ -894,7 +986,7 @@ button{cursor:pointer;border:none;font-family:var(--f)}
 <!-- ══ PRICING / SCHEDULE CTA ════════════════════════ -->
 <section class="section" id="schedule" style="background:var(--cream)">
   <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start">
+    <div class="pricing-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start">
       <div>
         <div class="section-label reveal">Transparent Pricing</div>
         <h2 class="section-heading reveal rd1">Clear fees.<br>No surprises.</h2>
@@ -1095,6 +1187,7 @@ button{cursor:pointer;border:none;font-family:var(--f)}
       </div>
     </div>
 
+    <div class="footer-cols-grid">
     <div>
       <div class="footer-col-title">Services</div>
       <ul class="footer-links">
@@ -1134,7 +1227,8 @@ button{cursor:pointer;border:none;font-family:var(--f)}
         <a href="#schedule" class="btn-amber" style="font-size:11px;padding:9px 16px;width:100%;justify-content:center">Book Now →</a>
       </div>
     </div>
-  </div>
+    </div><!-- /footer-cols-grid -->
+  </div><!-- /footer-top -->
 
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 Driftless Health · All Rights Reserved</div>
@@ -1152,6 +1246,44 @@ button{cursor:pointer;border:none;font-family:var(--f)}
 </style>
 
 <script>
+/* ── 0. HAMBURGER MENU ───────────────────────────────── */
+const hamburger   = document.getElementById('navHamburger');
+const mobileMenu  = document.getElementById('mobileMenu');
+
+function openMenu() {
+  hamburger.classList.add('open');
+  mobileMenu.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  mobileMenu.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  mobileMenu.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.contains('open') ? closeMenu() : openMenu();
+});
+
+// Close on nav link tap
+document.querySelectorAll('.mobile-nav-link').forEach(a => {
+  a.addEventListener('click', closeMenu);
+});
+
+// Close on backdrop tap (outside drawer)
+mobileMenu.addEventListener('click', e => {
+  if (e.target === mobileMenu) closeMenu();
+});
+
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeMenu();
+});
+
 /* ── 1. NAV SHADOW + SCROLL PROGRESS ─────────────────── */
 const nav       = document.getElementById('nav');
 const progress  = document.getElementById('navProgress');
