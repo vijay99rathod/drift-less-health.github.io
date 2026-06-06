@@ -1,0 +1,13 @@
+node_modules/
+*.log
+.DS_Store
+package-lock.json
+scrape.js
+get-fonts.js
+capture-site.js
+verify.js
+clinicore-*.png
+clinicore-design.json
+reference-site.png
+verify-*.png
+/tmp
