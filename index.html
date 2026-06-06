@@ -310,9 +310,96 @@ button{cursor:pointer;border:none;font-family:var(--f)}
 .footer-disclaimer{font-size:11px;color:rgba(255,255,255,.2);max-width:55ch;text-align:right;line-height:1.5}
 
 /* ─── SCROLL REVEAL ───────────────────────────────── */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.rd1{transition-delay:.1s}.rd2{transition-delay:.18s}.rd3{transition-delay:.26s}.rd4{transition-delay:.34s}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+
+/* Fade-in from left */
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+
+/* Fade-in from right */
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* Scale in */
+.reveal-scale{opacity:0;transform:scale(.96);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* ─── NAV LINK HOVER ──────────────────────────────── */
+.nav-links a{transition:color .25s}
+
+/* ─── BUTTON MICRO ────────────────────────────────── */
+.btn-amber,.btn-white,.btn-ghost-white,.btn-white-outline,.nav-btn{
+  transition:background .25s,transform .2s cubic-bezier(.16,1,.3,1),box-shadow .25s,border-color .25s,color .25s;
+  will-change:transform;
+}
+.btn-amber:active,.btn-white:active,.nav-btn:active{transform:scale(.97) translateY(0) !important}
+
+/* ─── HERO IMAGE PARALLAX ─────────────────────────── */
+.hero-img-placeholder img{transition:transform .1s linear}
+
+/* ─── STAT COUNTER ────────────────────────────────── */
+.stat-num{transition:color .3s}
+.stat-item{transition:background .3s,transform .4s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+.stat-item:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+
+/* ─── ACCORDION ───────────────────────────────────── */
+.accordion-body{transition:max-height .45s cubic-bezier(.16,1,.3,1),padding .35s,opacity .3s}
+.accordion-item:not(.open) .accordion-body{opacity:0}
+.accordion-item.open .accordion-body{opacity:1;transition:max-height .45s cubic-bezier(.16,1,.3,1),padding .35s,opacity .4s .1s}
+.accordion-header{transition:color .2s}
+.accordion-icon{transition:background .3s,border-color .3s,transform .35s cubic-bezier(.34,1.56,.64,1)}
+.accordion-item.open .accordion-icon{transform:rotate(45deg)}
+
+/* ─── TEAM / BLOG CARD HOVER ──────────────────────── */
+.team-card{transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s}
+.blog-card{transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s}
+.team-card:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(0,0,0,.12)}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.1)}
+.team-card-social{transition:opacity .3s,transform .35s cubic-bezier(.16,1,.3,1)}
+
+/* ─── SERVICE CARD IMAGE ─────────────────────────── */
+.services-img img{transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.services-img-wrap:hover .services-img img{transform:scale(1.04)}
+
+/* ─── ABOUT IMAGE HOVER ───────────────────────────── */
+.about-img-main img{transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.about-imgs:hover .about-img-main img{transform:scale(1.04)}
+
+/* ─── CONTACT ICON ────────────────────────────────── */
+.contact-icon{transition:transform .3s cubic-bezier(.34,1.56,.64,1),background .25s}
+.contact-item:hover .contact-icon{transform:scale(1.12) rotate(-6deg)}
+
+/* ─── FOOTER SOCIAL ───────────────────────────────── */
+.footer-social a,.topbar-social a{transition:background .25s,border-color .25s,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.footer-social a:hover,.topbar-social a:hover{transform:translateY(-3px)}
+
+/* ─── QUOTE BAND MARK ─────────────────────────────── */
+.quote-band-text{transition:color .3s}
+
+/* ─── NAV SCROLL INDICATOR ────────────────────────── */
+.nav-progress{position:fixed;top:0;left:0;height:2px;background:var(--amber);z-index:300;transform-origin:left;transform:scaleX(0);transition:transform .1s linear}
+
+/* ─── HERO LABEL DOT PULSE ────────────────────────── */
+.hero-label-dot{animation:dotPulse 2.5s ease-in-out infinite}
+
+/* ─── WHYTRUST CHECK ICON ─────────────────────────── */
+.whytrust-check-icon{transition:transform .3s cubic-bezier(.34,1.56,.64,1),background .25s}
+.whytrust-check:hover .whytrust-check-icon{transform:scale(1.15)}
+
+/* ─── ABOUT ACCENT BADGE ──────────────────────────── */
+.about-accent{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.about-imgs:hover .about-accent{transform:translateY(-4px)}
+
+/* ─── STAT DIVIDER GROW ───────────────────────────── */
+.stat-divider{transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.stat-item.counted .stat-divider{transform:scaleX(1)}
+
+/* ─── PREFERS REDUCED MOTION ──────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
 
 /* ─── RESPONSIVE ──────────────────────────────────── */
 @media(max-width:1024px){
@@ -345,6 +432,9 @@ button{cursor:pointer;border:none;font-family:var(--f)}
 </style>
 </head>
 <body>
+
+<!-- Scroll progress bar -->
+<div class="nav-progress" id="navProgress"></div>
 
 <!-- ══ TOP BAR ════════════════════════════════════════ -->
 <div class="topbar">
@@ -1054,36 +1144,191 @@ button{cursor:pointer;border:none;font-family:var(--f)}
 
 
 <style>
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes dotPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.6}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 </style>
 
 <script>
-// Nav shadow on scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('shadow', scrollY > 40), {passive:true});
+/* ── 1. NAV SHADOW + SCROLL PROGRESS ─────────────────── */
+const nav       = document.getElementById('nav');
+const progress  = document.getElementById('navProgress');
 
-// Scroll reveal
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)} });
-}, {threshold:.1, rootMargin:'0px 0px -36px 0px'});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+window.addEventListener('scroll', () => {
+  const sy = window.scrollY;
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
 
-// Accordion
+  // Nav shadow
+  nav.classList.toggle('shadow', sy > 40);
+
+  // Progress bar
+  const pct = maxScroll > 0 ? sy / maxScroll : 0;
+  progress.style.transform = `scaleX(${pct})`;
+
+  // Hero parallax — subtle, image moves slower than scroll
+  const heroImg = document.querySelector('.hero-img-placeholder img');
+  if (heroImg && sy < window.innerHeight) {
+    heroImg.style.transform = `translateY(${sy * 0.18}px)`;
+  }
+}, { passive: true });
+
+/* ── 2. UNIVERSAL SCROLL REVEAL ──────────────────────── */
+const revealClasses = ['.reveal', '.reveal-left', '.reveal-right', '.reveal-scale'];
+const allReveals = document.querySelectorAll(revealClasses.join(','));
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+allReveals.forEach(el => revealObserver.observe(el));
+
+/* ── 3. STAT COUNTER ANIMATION ───────────────────────── */
+function animateCount(el, target, suffix, duration) {
+  let start = 0;
+  const startTime = performance.now();
+  const isDecimal = target % 1 !== 0;
+
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = eased * target;
+    el.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target % 1 !== 0 ? target : Math.round(target);
+  }
+  requestAnimationFrame(step);
+}
+
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const item   = e.target;
+    const numEl  = item.querySelector('.stat-num');
+    if (!numEl || item.classList.contains('counted')) return;
+
+    item.classList.add('counted');
+
+    const text   = numEl.textContent.trim();
+    const suffix = numEl.querySelector('span') ? numEl.querySelector('span').textContent : '';
+    const raw    = text.replace(suffix, '').replace(/[^0-9.]/g, '');
+    const target = parseFloat(raw);
+
+    if (!isNaN(target)) {
+      // Rebuild: number span + suffix span
+      numEl.innerHTML = `<span class="count-num">0</span><span>${suffix}</span>`;
+      animateCount(numEl.querySelector('.count-num'), target, suffix, 1400);
+    }
+
+    // Animate the divider bar
+    const divider = item.querySelector('.stat-divider');
+    if (divider) divider.style.transform = 'scaleX(1)';
+
+    statObserver.unobserve(item);
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-item').forEach(el => statObserver.observe(el));
+
+/* ── 4. ACCORDION ────────────────────────────────────── */
 function toggleAccordion(header) {
-  const item = header.parentElement;
+  const item   = header.parentElement;
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.accordion-item.open').forEach(i => i.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
 }
 
-// Smooth scroll
+/* ── 5. SMOOTH SCROLL ────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    if (t) {
+      e.preventDefault();
+      const offset = nav.offsetHeight + 16;
+      const top = t.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
   });
 });
+
+/* ── 6. STAGGERED GRID REVEALS ───────────────────────── */
+// Team cards, blog cards, service cards — stagger siblings
+document.querySelectorAll('.team-grid, .blog-grid, .services-grid').forEach(grid => {
+  const children = grid.querySelectorAll('.reveal');
+  children.forEach((child, i) => {
+    child.style.transitionDelay = `${i * 0.09}s`;
+  });
+});
+
+/* ── 7. ABOUT IMAGE STAGGER ──────────────────────────── */
+const aboutImgs = document.querySelectorAll('.about-img-main, .about-img-sec, .about-accent');
+aboutImgs.forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = i === 2 ? 'translateY(10px) scale(.96)' : 'translateY(20px)';
+  el.style.transition = `opacity .7s cubic-bezier(.16,1,.3,1) ${.3 + i * .15}s, transform .7s cubic-bezier(.16,1,.3,1) ${.3 + i * .15}s`;
+});
+
+const aboutObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    aboutImgs.forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0) scale(1)';
+    });
+    aboutObserver.disconnect();
+  });
+}, { threshold: 0.2 });
+
+const aboutSection = document.querySelector('.about-imgs');
+if (aboutSection) aboutObserver.observe(aboutSection);
+
+/* ── 8. WHY-TRUST STAT BADGE BOUNCE ─────────────────── */
+const statBadge = document.querySelector('.whytrust-stat');
+if (statBadge) {
+  statBadge.style.opacity = '0';
+  statBadge.style.transform = 'translateY(16px) scale(.95)';
+  statBadge.style.transition = 'opacity .6s cubic-bezier(.16,1,.3,1) .4s, transform .6s cubic-bezier(.34,1.56,.64,1) .4s';
+
+  const badgeObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      statBadge.style.opacity = '1';
+      statBadge.style.transform = 'translateY(0) scale(1)';
+      badgeObs.disconnect();
+    }
+  }, { threshold: 0.4 });
+  badgeObs.observe(document.querySelector('.whytrust-img') || statBadge);
+}
+
+/* ── 9. HERO BAR SLIDE-IN ────────────────────────────── */
+document.querySelectorAll('.hero-bar-item').forEach((item, i) => {
+  item.style.opacity = '0';
+  item.style.transform = 'translateY(16px)';
+  item.style.transition = `opacity .6s cubic-bezier(.16,1,.3,1) ${.8 + i * .12}s, transform .6s cubic-bezier(.16,1,.3,1) ${.8 + i * .12}s`;
+  setTimeout(() => {
+    item.style.opacity = '1';
+    item.style.transform = 'translateY(0)';
+  }, 800 + i * 120);
+});
+
+/* ── 10. CTA BAND SHIMMER ─────────────────────────────── */
+const ctaBand = document.querySelector('.cta-band');
+if (ctaBand) {
+  ctaBand.style.backgroundSize = '200% 100%';
+  ctaBand.style.backgroundImage = 'linear-gradient(90deg, var(--amber) 0%, var(--amber-lt) 50%, var(--amber) 100%)';
+  ctaBand.style.animation = 'shimmer 4s ease-in-out infinite';
+}
 </script>
+
+<style>
+@keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+</style>
 </body>
 </html>
